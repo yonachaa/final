@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Furniture - George Nakashima Woodworkers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lustria&display=swap" rel="stylesheet">
+  <style>
+    /* ────────────────────────────────────────────────────────────────────────────
+       기본 리셋 및 기본 스타일
+    ──────────────────────────────────────────────────────────────────────────── */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(236,236,236);
+      color: black;
+      font-family: 'Lustria', serif;
+      overflow-x: hidden;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       페이지 전체 컨테이너
+    ──────────────────────────────────────────────────────────────────────────── */
+    .page-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       헤더 로고
+    ──────────────────────────────────────────────────────────────────────────── */
+    .page-logo {
+      text-align: center;
+      margin: 40px auto 4px;
+    }
+    .page-logo img {
+      width: 52.5px;
+      height: auto;
+      opacity: 0.5;
+    }
+    .page-logo-text {
+      text-align: center;
+      font-size: 16.8px;
+      font-weight: 500;
+      opacity: 0.9;
+      letter-spacing: 0.04em;
+      color: #666;
+      text-decoration: none;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       콘텐츠 영역
+    ──────────────────────────────────────────────────────────────────────────── */
+    .page-content {
+      flex: 1;
+      margin-top: 50px;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .section-title {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 21px;
+      margin: 140px 0 21px 84px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       가구 이미지 그리드
+    ──────────────────────────────────────────────────────────────────────────── */
+    .furniture-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 560px;
+      margin: 56px auto;
+      max-width: 1610px;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .furniture-item {
+      cursor: pointer;
+    }
+    .furniture-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transition: filter 1s ease;
+    }
+    .furniture-image.slatted-bed {
+      width: 95%;
+      margin: 0 auto;
+    }
+    .furniture-item:hover .furniture-image {
+      filter: grayscale(0%);
+    }
+    .furniture-caption {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 16.8px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 7px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       비디오 섹션
+    ──────────────────────────────────────────────────────────────────────────── */
+    .video-section {
+      position: absolute;
+      top: 350px;
+      bottom: 370px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 117px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0; /* 세로 간격 제거 */
+      overflow: hidden;
+    }
+    .video-section .embedded-video {
+      position: relative;
+      width: auto;
+      height: 100%;
+      margin: 0; /* 기본 마진 제거 */
+      transform: rotate(90deg) scale(0.6);
+      transform-origin: center;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       Footer
+    ──────────────────────────────────────────────────────────────────────────── */
+    footer.footer {
+      background-color: rgb(236,236,236);
+      padding: 14px 84px;
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    footer.footer * {
+      font-size: 14px !important;
+      font-family: 'Lustria', serif !important;
+    }
+    .footer-top,
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 84px 100px;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .footer-top { margin-bottom: 42px; }
+    .footer-phone a,
+    .footer-address a,
+    .footer-email a { opacity: 0.8; text-decoration: none; color: inherit; }
+    .footer-address { margin-left: 10px; }
+    .footer-email { margin-left: auto; }
+    .footer-links a { margin: 0 7px; opacity: 0.8; text-decoration: none; color: inherit; }
+    .footer-company span { font-weight: 500; opacity: 0.8; }
+    .footer-logo { position: absolute; left: 50%; top: 140px; transform: translateX(-50%); }
+    .footer-logo img { width: 52.5px; height: auto; opacity: 0.4; }
+
+    /* ────────────────────────────────────────────────────────────────────────────
+       모바일 전용 스타일
+    ──────────────────────────────────────────────────────────────────────────── */
+    @media screen and (max-width: 768px) {
+      .furniture-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 70px;
+        padding: 0 30px;
+        margin: 28px auto 100px auto;
+        max-width: 100%;
+      }
+      .furniture-item { width: 100%; }
+      .furniture-image { filter: none !important; }
+      .section-title {
+        margin: 35px 0 40px 21px;
+        font-size: 16px;
+      }
+      .video-section { display: none !important; }
+      footer.footer { padding: 14px 20px; }
+      footer.footer * { font-size: 12px !important; }
+      .footer-top,
+      .footer-bottom {
+        margin: 28px 0;
+        padding: 0 10px;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .footer-top { margin-bottom: 14px; }
+      .footer-phone,
+      .footer-address,
+      .footer-email { margin: 0; text-align: center; }
+      .footer-logo {
+        position: relative;
+        top: auto;
+        margin: 14px auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+      .footer-links span { display: none; }
+      .footer-company { display: none; }
+      .footer-logo img { width: 42px; }
+      .furniture-caption { font-size: 11.76px; margin-top: 4.9px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <!-- 헤더 -->
+    <div class="page-logo">
+      <a href="index.html#hero"><img src="https://lh3.googleusercontent.com/d/12tKq7EELTkKRP25jNT2XuAq2C59Fhh8q?authuser=0" alt="Nakashima Logo"></a>
+      <div class="page-logo-text">GEORGE NAKASHIMA</div>
+    </div>
+
+    <!-- 콘텐츠: Chairs & Rockers -->
+    <div class="page-content">
+      <h2 class="section-title">Chairs &amp; Rockers</h2>
+      <div class="furniture-grid">
+        <div class="furniture-item">
+          <a href="lounge-chair.html"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Lounge-Chair-1i-1919x1280.jpg" alt="Lounge Chair" class="furniture-image"></a>
+          <div class="furniture-caption">LOUNGE CHAIR</div>
+        </div>
+        <div class="furniture-item">
+          <a href="conoid-chair.html"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2018/05/Conoid-Lounge-Chair-1-1920x1280.jpg" alt="Conoid Chair" class="furniture-image"></a>
+          <div class="furniture-caption">CONOID CHAIR</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Tables</h2>
+      <div class="furniture-grid">
+        <div class="furniture-item">
+          <a href="frenchmans-cove-table.html"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/FCII-DT-1-1920x1280.jpg" alt="Frenchman's Cove Table" class="furniture-image"></a>
+          <div class="furniture-caption">FRENCHMAN'S COVE TABLE</div>
+        </div>
+        <div class="furniture-item">
+          <a href="conoid-dining-table.html"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Conoid-DT-1-1920x1280.jpg" alt="Conoid Dining Table" class="furniture-image"></a>
+          <div class="furniture-caption">CONOID DINING TABLE</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Cabinets</h2>
+      <div class="furniture-grid">
+        <div class="furniture-item">
+          <a href="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Odakyu-Cabinet-1-1920x1280.jpg" target="_blank"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Odakyu-Cabinet-1-1920x1280.jpg" alt="Odakyu Cabinet" class="furniture-image"></a>
+          <div class="furniture-caption">ODAKYU CABINET</div>
+        </div>
+        <div class="furniture-item">
+          <a href="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Chest-of-Drawers-Single1-1920x1280.jpg" target="_blank"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Chest-of-Drawers-Single1-1920x1280.jpg" alt="Chest Of Drawers" class="furniture-image"></a>
+          <div class="furniture-caption">CHEST OF DRAWERS</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Upholstery</h2>
+      <div class="furniture-grid">
+        <div class="furniture-item">
+          <a href="https://nakashimawoodworkers.com/wp-content/uploads/2017/07/Sectional-Sofa-1-1-1280x854.jpg" target="_blank"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/07/Sectional-Sofa-1-1-1280x854.jpg" alt="Sectional Sofa" class="furniture-image slatted-bed"></a>
+          <div class="furniture-caption">SECTIONAL SOFA</div>
+        </div>
+        <div class="furniture-item">
+          <a href="https://nakashimawoodworkers.com/wp-content/uploads/2017/07/Long-Chair-1-1-1280x853.jpg" target="_blank"><img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/07/Long-Chair-1-1-1280x853.jpg" alt="Long Chair" class="furniture-image"></a>
+          <div class="furniture-caption">LONG CHAIR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 비디오 섹션 -->
+    <div class="video-section">
+      <video class="embedded-video" autoplay muted loop playsinline>
+        <source src="videos/furniture.mp4" type="video/mp4">
+      </video>
+      <video class="embedded-video" autoplay muted loop playsinline>
+        <source src="videos/furniture.mp4" type="video/mp4">
+      </video>
+   
+      
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.embedded-video').forEach(video => {
+          video.playbackRate = 0.8;
+        });
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-phone"><a href="tel:+12158622272">215-862-2272</a></div>
+        <div class="footer-address"><a href="https://www.google.com/maps/place/1847+Aquetong+Rd,+New+Hope,+PA+18938" target="_blank">1847 Aquetong Rd, New Hope, PA 18938</a></div>
+        <div class="footer-email"><a href="mailto:info@nakashimawoodworkers.com">INFO@NAKASHIMAWOODWORKERS.COM</a></div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-company"><span>GEORGE NAKASHIMA WOODWORKERS</span></div>
+        <div class="footer-logo"><img src="https://lh3.googleusercontent.com/d/12tKq7EELTkKRP25jNT2XuAq2C59Fhh8q?authuser=0" alt="Nakashima Logo"></div>
+        <div class="footer-links">
+          <a href="#">PRIVACY POLICY</a><span> | </span>
+          <a href="#">© 2016 – 2025</a><span> | </span>
+          <a href="#">SITE CREDITS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

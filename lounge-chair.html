@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lounge Chair - George Nakashima Woodworkers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lustria&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(236, 236, 236);
+            color: #333;
+            font-family: 'Lustria', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            width: 45px;
+            height: auto;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 36px;
+            letter-spacing: 0.04em;
+            margin: 20px 0;
+            opacity: 0.8;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .product-image:hover {
+            /* hover 효과 제거 */
+        }
+
+        .description-section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .description-title {
+            font-size: 24px;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .description-text {
+            font-size: 18px;
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            opacity: 0.7;
+        }
+
+        .related-works {
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .related-title {
+            font-size: 24px;
+            letter-spacing: 0.04em;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .related-item {
+            cursor: pointer;
+        }
+
+        .related-image {
+            width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 1s ease;
+        }
+
+        .related-item:hover .related-image {
+            filter: grayscale(0%);
+        }
+
+        .related-caption {
+            margin-top: 20px;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+            opacity: 0.6;
+        }
+
+        /* footer 스타일 수정 */
+        footer.footer {
+            background-color: rgb(236,236,236);
+            padding: 20px 60px;
+            color: #333;
+            font-size: 16px;
+            text-align: center;
+            opacity: 0.9;
+            margin-top: 80px;
+        }
+        footer.footer * {
+            font-size: 16px !important;
+            font-family: 'Lustria', serif !important;
+        }
+        .footer-top,
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            margin-bottom: 20px;
+        }
+        .footer-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .footer-logo img {
+            width: 40px;
+            height: auto;
+            opacity: 0.4;
+        }
+        .footer-phone a,
+        .footer-address a,
+        .footer-email a {
+            font-size: 16px !important;
+            opacity: 0.9;
+            text-decoration: none;
+            color: inherit;
+        }
+        .footer-address {
+            margin-left: 10px;
+        }
+        .footer-email {
+            margin-left: auto;
+        }
+        .footer-company span {
+            font-size: 16px !important;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .footer-links a {
+            font-size: 16px !important;
+            margin: 0 10px;
+            opacity: 0.9;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media screen and (max-width: 768px) {
+            footer.footer {
+                padding: 14px 20px;
+            }
+            footer.footer * {
+                font-size: 12px !important;
+            }
+            .footer-top,
+            .footer-bottom {
+                margin: 28px 0;
+                padding: 0 10px;
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+            .footer-top {
+                margin-bottom: 14px;
+            }
+            .footer-phone,
+            .footer-address,
+            .footer-email {
+                margin: 0;
+                text-align: center;
+            }
+            .footer-logo {
+                position: relative;
+                top: auto;
+                margin: 14px auto;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 7px;
+            }
+            .footer-links span {
+                display: none;
+            }
+            .footer-company {
+                display: none;
+            }
+            .footer-logo img {
+                width: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="header">
+            <a href="index.html">
+                <img src="https://lh3.googleusercontent.com/d/12tKq7EELTkKRP25jNT2XuAq2C59Fhh8q?authuser=0" alt="Nakashima Logo" class="logo">
+            </a>
+            <h1 class="product-title">LOUNGE CHAIR</h1>
+        </div>
+
+        <img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Lounge-Chair-1i-1919x1280.jpg" alt="Lounge Chair" class="product-image">
+
+        <div class="description-section">
+            <h2 class="description-title">DESCRIPTION</h2>
+            <p class="description-text">
+                The Lounge Chair represents the perfect harmony between traditional Japanese craftsmanship and modern design. Each piece is meticulously crafted from carefully selected solid wood, showcasing the natural beauty of the material. The chair's flowing lines and organic form create a sense of tranquility and balance, embodying the Zen philosophy of simplicity and natural beauty.
+            </p>
+        </div>
+
+        <div class="related-works">
+            <h2 class="related-title">RELATED WORKS</h2>
+            <div class="related-grid">
+                <div class="related-item">
+                    <img src="https://nakashimawoodworkers.com/wp-content/uploads/2018/05/Conoid-Lounge-Chair-1-1920x1280.jpg" alt="Conoid Chair" class="related-image">
+                    <div class="related-caption">CONOID CHAIR</div>
+                </div>
+                <div class="related-item">
+                    <img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/FCII-DT-1-1920x1280.jpg" alt="Frenchman's Cove Table" class="related-image">
+                    <div class="related-caption">FRENCHMAN'S COVE TABLE</div>
+                </div>
+                <div class="related-item">
+                    <img src="https://nakashimawoodworkers.com/wp-content/uploads/2017/06/Conoid-DT-1-1920x1280.jpg" alt="Conoid Dining Table" class="related-image">
+                    <div class="related-caption">CONOID DINING TABLE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-phone">
+                <a href="tel:+12158622272">215-862-2272</a>
+            </div>
+            <div class="footer-address">
+                <a href="https://www.google.com/maps/place/1847+Aquetong+Rd,+New+Hope,+PA+18938" target="_blank">1847 Aquetong Rd, New Hope, PA 18938</a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:info@nakashimawoodworkers.com">INFO@NAKASHIMAWOODWORKERS.COM</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-company">
+                <span>GEORGE NAKASHIMA WOODWORKERS</span>
+            </div>
+            <div class="footer-logo">
+                <img src="https://lh3.googleusercontent.com/d/12tKq7EELTkKRP25jNT2XuAq2C59Fhh8q?authuser=0" alt="Nakashima Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#">PRIVACY POLICY</a>
+                <span> | </span>
+                <a href="#">© 2016 – 2025</a>
+                <span> | </span>
+                <a href="#">SITE CREDITS</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

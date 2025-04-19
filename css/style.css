@@ -1,0 +1,331 @@
+@font-face {
+  font-family: 'FreightDispMedium';
+  src: url('../fonts/FreightDispMedium.woff2') format('woff2'),
+       url('../fonts/FreightDiAspMedium.woff')  format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FreightDispBold';
+  src: url('../fonts/FreightDispBold.woff2') format('woff2'),
+       url('../fonts/FreightDispBold.woff')   format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Book.woff2') format('woff2'),
+       url('../fonts/Gotham-Book.woff')  format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Bold.woff2') format('woff2'),
+       url('../fonts/Gotham-Bold.woff')   format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLOBAL RESET & BASE
+   ───────────────────────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  font-family: 'FreightDispMedium', serif;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VIDEO BACKGROUND
+   ───────────────────────────────────────────────────────────────────────────── */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 1s ease-out;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) contrast(1.1);
+  z-index: 1;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  border: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-wrapper iframe {
+    width: 100vw;
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-wrapper iframe {
+    width: 177.78vh;
+    height: 100vh;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+  background-color: #000;
+}
+
+.hero-title {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Lustria', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgb(165, 139, 105);
+  text-align: center;
+  z-index: 2;
+  opacity: 0.8;
+  transition: opacity 1s ease-in;
+  text-shadow: 0 1px 3px rgba(120, 100, 80, 0.3);
+  background-color: transparent;
+  -webkit-text-stroke: 0.3px rgb(145, 119, 85);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOGO & OVERLAYS
+   ───────────────────────────────────────────────────────────────────────────── */
+.initial-logo {
+  position: absolute;
+  top: 35px;
+  left: calc(50% - 1.5px);
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  z-index: 3;
+  filter: none;
+}
+
+.initial-logo img {
+  width: 40.75px;
+  height: auto;
+}
+
+.small-overlay {
+  position: absolute;
+  top: calc(50% + 40px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-width: 90%;
+  height: auto;
+  z-index: 2;
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────────────────────── */
+.footer {
+  position: static;
+  width: 100%;
+  padding: 20px 40px;
+  background: transparent;
+  color: white;
+  font-family: 'FreightDispMedium', serif;
+  font-size: 14px;
+  z-index: 10;
+  text-transform: uppercase;
+  opacity: 0.62;
+}
+
+.footer-top,
+.footer-bottom {
+  position: static;
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MENU TEXTS & FLOWER BUTTONS
+   ───────────────────────────────────────────────────────────────────────────── */
+.menu-texts {
+  position: fixed;
+  right: -390px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 10;
+}
+
+.menu-text {
+  font-family: 'FreightDispMedium', serif;
+  font-size: 40px;
+  color: white;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* hover 시 텍스트 노출 */
+.flowerbutton1:hover ~ .menu-texts .furniture,
+.flowerbutton2:hover ~ .menu-texts .philosophy,
+.flowerbutton3:hover ~ .menu-texts .books,
+.flowerbutton4:hover ~ .menu-texts .news,
+.flowerbutton5:hover ~ .menu-texts .about {
+  opacity: 0.8;
+  transform: translateX(0);
+}
+
+.logo-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  z-index: 3;
+}
+
+.flowerbutton {
+  position: absolute;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  width: 318px;
+}
+
+.flowerbutton.hover-enabled {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.flowerbutton.hover-enabled:hover {
+  opacity: 0.8 !important;
+}
+
+.flowerbutton img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 개별 버튼 위치 */
+.flowerbutton1 { top: 1%; left: 24.0%; width: 276px; transform: translateX(-50%); }
+.flowerbutton2 { top: 1.2%; right: 1.5%; width: 260px; }
+.flowerbutton3 { bottom: 14.8%; right: -12.0%; }
+.flowerbutton4 { bottom: -13%; left: 48.7%; width: 354px; transform: translateX(-50%); }
+.flowerbutton5 { bottom: 16.5%; left: -11.5%; width: 308px;}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE ADJUSTMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .hero-title   { font-size: 18px; }
+  .menu-text    { font-size: 16px; }
+  .footer       { font-size: 12px; padding: 15px 20px; }
+}
+
+@media (max-width: 768px) {
+  /* 비디오 비율 유지 */
+  .video-wrapper iframe {
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
+  }
+
+  /* 페이지 콘텐츠 & 제목 */
+  .page-content       { margin: 80px auto; }
+  .page-content h1    { font-size: 28px; }
+  .section            { /* 필요에 따라 수정 */ }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE OVERRIDES: LOGO BUTTONS, HERO-TITLE, SMALL-OVERLAY & FLOWERBUTTON SIZING
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .logo-buttons {
+    width: 280px;        /* 600px * 0.8 */
+    height: 280px;       /* 600px * 0.8 */
+    transform: translate(-50%, -50%);
+    line-spacing: 6px;
+  }
+
+  .hero-title {
+    font-size: 16px;     /* 20px * 0.8 */
+  }
+
+  /* small-overlay 20% 축소 */
+  .small-overlay {
+    width: 72%;          /* 기존 max-width:90% → 90% * 0.8 */
+  }
+
+  
+
+  /* ──────────────────────────────────────────────────────────────────────────
+     MOBILE 전용: flowerbutton 위치 조정
+     ────────────────────────────────────────────────────────────────────────── */
+     .flowerbutton1 { top: 22%; left: 30%; width: 33%; height: 33% transform: translateX(-50%); }
+     .flowerbutton2 { top: 17%; right: 13.2%; width: 33.0%; height: 33.0%; }
+     .flowerbutton3 { bottom: 14.5%; right: 1.0%; width: 43.9%; height: 43.9% }
+     .flowerbutton4 { bottom: -8.5%; left: 49%; width: 45.5%; height: 45.5% transform: translateX(-50%); }
+     .flowerbutton5 { bottom: 15.3%; left: 0.5%; width: 44.3%; height: 44.3%;}
+   }
